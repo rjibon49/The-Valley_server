@@ -23,6 +23,7 @@ async function run() {
 
         const database = client.db('tourServices')
         const tourServicesCollection = database.collection('services');
+        const bookingCollection = database.collection('order');
 
         // GET ALL DATA
         app.get('/services', async (req, res) => {
@@ -47,6 +48,16 @@ async function run() {
             console.log(result);
             res.json(result)
         })
+
+        // ADD BOOKING API
+        app.post('/booking', async(req, res) => {
+            const order = req.body;
+            console.log('Order COnfirm', order);
+            const result = await bookingCollection.insertOne(order);
+            console.log(result);
+            res.json(result)
+        })
+        
     }
     finally {
         //await client.close();
