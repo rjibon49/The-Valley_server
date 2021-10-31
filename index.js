@@ -57,6 +57,13 @@ async function run() {
             console.log(result);
             res.json(result)
         })
+
+         // GET ALL Booking DATA
+         app.get('/booking', async (req, res) => {
+            const cursor = bookingCollection.find({});
+            const booking = await cursor.toArray();
+            res.send(booking);
+        })
         
     }
     finally {
