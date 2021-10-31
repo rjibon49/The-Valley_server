@@ -72,6 +72,14 @@ async function run() {
             const booking = await bookingCollection.findOne(query);
             res.send(booking);
         })
+
+        // DELETE SERVICES
+        app.delete('/services/:id', async(req, res) => {
+            const id = req.params.id;
+            const query = {_id: ObjectId(id)};
+            const result = await tourServicesCollection.deleteOne(query)
+            res.json(result)
+        })
         
     }
     finally {
