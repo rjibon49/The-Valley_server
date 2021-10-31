@@ -64,6 +64,14 @@ async function run() {
             const booking = await cursor.toArray();
             res.send(booking);
         })
+
+        //GET SINGLE BOOKING DATA 
+        app.get('/booking/:id', async ( req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id)};
+            const booking = await bookingCollection.findOne(query);
+            res.send(booking);
+        })
         
     }
     finally {
