@@ -21,7 +21,7 @@ async function run() {
     try{
         await client.connect();
 
-        const database = client.db('tourServices')
+        const database = client.db('wrish')
         const tourServicesCollection = database.collection('services');
         const bookingCollection = database.collection('order');
 
